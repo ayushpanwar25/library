@@ -1,0 +1,61 @@
+.new-book {
+  background-color: #e6e6e6;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  height: 64px;
+}
+
+.new-book-form {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
+
+input {
+  border: 1px solid grey;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 8px;
+  padding-left: 12px;
+}
+
+input:hover {
+  outline: none;
+  background-color: white;
+  border: 2px solid grey;
+}
+
+input:focus {
+  outline: none;
+  background-color: white;
+  border: 2px solid #61dafb;
+}
+
+select {
+  border: 1px solid grey;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 8px;
+  padding-left: 12px;
+}
+
+select:focus {
+  outline: none;
+  background-color: white;
+  border: 2px solid #61dafb;
+}
+
+.add-book {
+  flex-shrink: 0;
+  padding: 0.4em 1em;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  background-color: #61dafb;
+  border-radius: 20px;
+}

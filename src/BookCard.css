@@ -1,0 +1,64 @@
+img {
+  width: 200px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  max-height: 300px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: bottom;
+  justify-content: space-between;
+  width: 200px;
+  max-height: 450px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 420px;
+}
+
+.bcard-body {
+  text-align: left;
+  padding: 12px;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: left;
+  padding: 8px;
+  gap: 8px;
+  padding-bottom: 10px;
+}
+
+.book-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+button {
+  flex-shrink: 0;
+  padding: 0.3em 0.8em;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+.delete-book {
+  background-color: #ff2f2f;
+  border-radius: 10px;
+}
+
+.mark-read {
+  background-color: #4fdcff;
+  border-radius: 10px;
+}
