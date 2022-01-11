@@ -4,25 +4,25 @@ import './BooksContainer.css';
 
 class BooksContainer extends Component {
 
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: []
+    }
+  }
 
-    const books = [
-      {
-        id: 1,
-        title: "The Hobbit",
-        author: "J.R.R. Tolkien",
-        image: "https://images-na.ssl-images-amazon.com/images/I/710+HcoP38L.jpg"
-      },
-      {
-        id: 2,
-        title: "The Lord of the Rings",
-        author: "J.R.R. Tolkien",
-        image: "https://images-na.ssl-images-amazon.com/images/I/41tA1m6+5dL._SX308_BO1,204,203,200_.jpg"
-      }];
+  componentDidMount() {
+    fetch("http://localhost:3002/bookDB")
+      .then(res => res.json())
+      .then(res => this.setState({ books: res }))
+      .catch(err => err);
+  }
+
+  render() {
 
     return (
       <div className="book-container">
-        {books.map(book => (
+        {this.state.books.map(book => (
           <BookCard
             key={book.id}
             image={book.image}
