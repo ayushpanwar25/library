@@ -4,12 +4,19 @@
 /node_modules
 /.pnp
 .pnp.js
+/.storybook
+/src/stories
+/src/books.json
 
 # testing
 /coverage
 
 # production
 /build
+
+# api
+/api/node_modules
+
 
 # misc
 .DS_Store
