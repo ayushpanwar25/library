@@ -1,6 +1,6 @@
 .new-book {
   background-color: #e6e6e6;
-  padding: 10px;
+  padding: 0.6em;
   display: flex;
   justify-content: center;
   gap: 48px;
@@ -47,7 +47,7 @@ select:focus {
   border: 2px solid #61dafb;
 }
 
-.add-book {
+.btn {
   flex-shrink: 0;
   padding: 0.4em 1em;
   color: #fff;

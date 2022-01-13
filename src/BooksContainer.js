@@ -1,38 +1,46 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import BookCard from "./BookCard";
 import './BooksContainer.css';
 
-class BooksContainer extends Component {
+export default function BooksContainer() {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      books: []
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+
+    async function getBooks() {
+      const res = await fetch(`http://192.168.0.10:3002/bookdb/getAll`);
+      const books = await res.json();
+      setBooks(books);
     }
+
+    getBooks();
+    return;
+  }, [books.length]);
+
+  async function deleteBook(id) {
+    await fetch(`http://192.168.0.10:3002/bookdb/delete/${id}`);
+    const newBooks = books.filter(book => book.id !== id);
+    setBooks(newBooks);
   }
 
-  componentDidMount() {
-    fetch("http://localhost:3002/bookDB")
-      .then(res => res.json())
-      .then(res => this.setState({ books: res }))
-      .catch(err => err);
+  async function markRead(id) {
+    await fetch(`http://192.168.0.10:3002/bookdb/update/${id}`, {
+      method: "POST"
+    });
+    setBooks(books);
   }
 
-  render() {
-
-    return (
-      <div className="book-container">
-        {this.state.books.map(book => (
-          <BookCard
-            key={book.id}
-            image={book.image}
-            title={book.title}
-            author={book.author}
-          />
-        ))}
-      </div>
-    );
-  }
+  return (
+    <div className="book-container">
+      {books.map(book => (
+        <BookCard
+          key={book.id}
+          deleteBook={() => deleteBook(book.id)}
+          markRead={() => markRead(book.id)}
+          book={book}
+        />
+      ))}
+    </div>
+  );
 }
-
-export default BooksContainer;

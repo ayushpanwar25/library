@@ -8,7 +8,8 @@
 }
 
 .App-logo {
-  height: 80px;
+  height: 90px;
+  width: 90px;
   pointer-events: none;
 }
 
@@ -28,6 +29,7 @@
   font-weight: 700;
   color: white;
   padding: 16px;
+  padding-left: 2px;
   margin: 0;
 }
 

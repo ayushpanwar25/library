@@ -9,18 +9,29 @@ class BookCard extends React.Component {
   }
 
   render() {
+
+    const { image, title, author, id, added, read } = this.props.book;
+    const { deleteBook, markRead } = this.props;
+
     return (
       <div className='book-card'>
         <div className="card-wrapper">
-          <img src={this.props.image} alt={this.props.title} />
+          <img src={image} alt={title} />
           <div className='bcard-body'>
-            <div className="book-title">{this.props.title}</div>
-            <div className="book-author">{this.props.author}</div>
+            <div className="book-title">{title}</div>
+            <div className="book-author">{author}</div>
+            <div className="book-author">{read} {added}</div>
           </div>
         </div>
         <div className="card-buttons">
-          <button className="delete-book">Delete</button>
-          <button className="mark-read">Mark Read</button>
+          <button className="delete-book" onClick={() => {
+            deleteBook(id);
+          }}
+          >Delete</button>
+          <button className="mark-read" onClick={() => {
+            markRead(id);
+          }}
+          >Mark Read</button>
         </div>
       </div>
     )
@@ -28,9 +39,9 @@ class BookCard extends React.Component {
 }
 
 BookCard.propTypes = {
-  image: PropTypes.string,
-  title: PropTypes.string,
-  author: PropTypes.string
+  book: PropTypes.object,
+  deleteBook: PropTypes.func,
+  markRead: PropTypes.func
 }
 
 export default BookCard;
