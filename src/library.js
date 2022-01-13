@@ -2,8 +2,8 @@ import React from 'react';
 
 import logo from './logo.svg';
 import './library.css';
-import BooksContainer from './BooksContainer';
 import NewBook from './NewBook';
+import BooksContainer from './BooksContainer';
 import { FaGithub } from 'react-icons/fa'
 
 function Library() {
@@ -13,7 +13,7 @@ function Library() {
         <img src={logo} className="App-logo" alt="logo" />
         Library
       </header>
-      <NewBook></NewBook>
+      <NewBook />
       <BooksContainer></BooksContainer>
       <footer className="footer">
         <div className="footer-text">

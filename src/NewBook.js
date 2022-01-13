@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './NewBook.css';
 
 export default function NewBook() {
+
   const [form, setForm] = useState({
     title: "",
     author: "",
@@ -16,6 +17,7 @@ export default function NewBook() {
   }
 
   async function onSubmit(e) {
+
     e.preventDefault();
 
     const newBook = { ...form };
@@ -36,29 +38,26 @@ export default function NewBook() {
       <form onSubmit={onSubmit} className="new-book-form">
         <input
           type="text"
-          className="form-control"
-          id="title"
+          className="form-input"
+          placeholder="Title"
           value={form.title}
           onChange={(e) => updateForm({ title: e.target.value })}
         />
         <input
           type="text"
-          className="form-control"
-          id="author"
+          className="form-input"
+          placeholder="Author"
           value={form.author}
           onChange={(e) => updateForm({ author: e.target.value })}
         />
         <input
           type="text"
-          className="form-control"
-          id="image-url"
+          className="form-input"
+          placeholder="Image URL"
           value={form.image}
           onChange={(e) => updateForm({ image: e.target.value })}
         />
-        <select id="read" name="read" onChange={(e) => updateForm({ read: e.target.value })}>
-          <option value='true'>Yes</option>
-          <option value='false'>No</option>
-        </select>
+        <input type="checkbox" checked={form.read} onChange={(e) => updateForm({ read: e.target.checked })} />
         <input
           type="submit"
           value="Add Book"

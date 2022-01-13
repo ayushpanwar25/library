@@ -23,10 +23,12 @@ router.get("/delete/:id", async (req, res) => {
   res.send(book.title);
 });
 
-router.post("/update/:id", async (req, res) => {
-  const book = new Book(req.body);
-  await book.save();
-  res.send(book);
+router.get("/update/:id", async (req, res) => {
+  await Book.findById(req.params.id).exec(async function (err, book) {
+    book.read = !book.read;
+    await book.save();
+  });
+  res.send("updated");
 });
 
 router.get('/get/:id', async (req, res) => {
@@ -50,7 +52,7 @@ router.get('/getRead', async (req, res) => {
   });
 });
 
-router.get('/geUnread', async (req, res) => {
+router.get('/getUnread', async (req, res) => {
   await Book.find({ read: false }).sort({ title: 1 }).exec((err, result) => {
     if (err) throw err;
     res.json(result);

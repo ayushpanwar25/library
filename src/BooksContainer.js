@@ -7,28 +7,24 @@ export default function BooksContainer() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-
-    async function getBooks() {
-      const res = await fetch(`http://192.168.0.10:3002/bookdb/getAll`);
-      const books = await res.json();
-      setBooks(books);
-    }
-
     getBooks();
     return;
   }, [books.length]);
 
-  async function deleteBook(id) {
-    await fetch(`http://192.168.0.10:3002/bookdb/delete/${id}`);
-    const newBooks = books.filter(book => book.id !== id);
-    setBooks(newBooks);
+  async function getBooks() {
+    const res = await fetch(`http://192.168.0.10:3002/bookdb/getAll`);
+    const books = await res.json();
+    setBooks(books);
   }
 
-  async function markRead(id) {
-    await fetch(`http://192.168.0.10:3002/bookdb/update/${id}`, {
-      method: "POST"
-    });
-    setBooks(books);
+  async function deleteBook(id) {
+    await fetch(`http://192.168.0.10:3002/bookdb/delete/${id}`);
+    getBooks();
+  }
+
+  async function changeRead(id) {
+    await fetch(`http://192.168.0.10:3002/bookdb/update/${id}`);
+    getBooks();
   }
 
   return (
@@ -37,7 +33,7 @@ export default function BooksContainer() {
         <BookCard
           key={book.id}
           deleteBook={() => deleteBook(book.id)}
-          markRead={() => markRead(book.id)}
+          changeRead={() => changeRead(book.id)}
           book={book}
         />
       ))}

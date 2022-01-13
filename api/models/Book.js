@@ -5,7 +5,7 @@ const BookSchema = new Schema({
   title: String,
   author: String,
   image: String,
-  read: { Boolean, default: false },
+  read: { type: Boolean, default: false },
   added: { type: Date, default: Date.now() }
 }, {
   collection: 'books'
